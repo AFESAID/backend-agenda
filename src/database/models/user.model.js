@@ -27,7 +27,7 @@ const UserSchema = {
     },
     status: {
         type:
-            DataTypes.STRING,
+            DataTypes.BOOLEAN,
         defaultValue: false
     }
 }
