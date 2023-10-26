@@ -1,37 +1,37 @@
 const {models} = require('./../libs/sequelize')
 
-class AreService {
+class AreaService{
     constructor(){
-        this.model = models.User
+        this.model = models.Area
     }
 
     async getAll(){
-        const users = await this.model.findAll()
-        return users
+        const areas = await this.model.findAll()
+        return areas
     }
 
-    async create(name,email,password,status){
-        const user = await this.model.create({name,email,password,status})
-        return user
+    async create (code,name,observations,status){
+        const area = await this.model.create({code,name,observations,status})
+        return area
     }
 
-    async findOne(id){
-        const user = await this.model.findByPk(id)
-        return user
+    async findOne(id) {
+        const area = await this.model.findByPk(id)
+        return area
     }
-
-    async update(id, values){
-        const user = await this.findOne(id)
-        if(!user) return null
-        const updateUser = await user.update(values)
+    
+    async update(id,values){
+        const area = await this.findOne(id)
+        if(!area) return null
+        const updateUser = await area.update(values)
         return updateUser
     }
 
     async delete(id){
-        const user = await this.findOne(id)
-        if(!user) return null
-        await user.destroy() 
-        return user.id
+        const area = await this.findOne(id)
+        if(!area) return null
+        await area.destroy()
+        return area.id
     }
 }
 
