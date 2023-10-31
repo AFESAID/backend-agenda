@@ -1,14 +1,18 @@
 const express = require('express')
-const { port: APP_PORT, port } = require('./config/config')
+const cors = require('cors')
+
+
+const { port: APP_PORT } = require('./config/config')
 const routerApi = require('./routes')
 
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 routerApi(app)
 
-app.listen(port, () => {
-    console.log(`App runing on port ${port}`
+app.listen(APP_PORT, () => {
+    console.log(`App runing on port ${APP_PORT}`
     )
 })
